@@ -4,10 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Data
@@ -19,6 +16,9 @@ public class Post {
     @Id
     private Integer id;
     private LocalDateTime postDate;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
     private String details;
 }
