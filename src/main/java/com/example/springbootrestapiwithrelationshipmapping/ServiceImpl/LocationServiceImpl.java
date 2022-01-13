@@ -6,6 +6,9 @@ import com.example.springbootrestapiwithrelationshipmapping.Services.LocationSer
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 
 @Service
 public class LocationServiceImpl implements LocationService {
@@ -30,12 +33,12 @@ public class LocationServiceImpl implements LocationService {
     }
 
     @Override
-    public Location getAllPost() {
-        return null;
+    public List<Location> getAllPost() {
+        return locationRepository.findAllLocation();
     }
 
     @Override
-    public Location findPostById(String id) {
-        return null;
+    public Optional<Location> findLocationById(int id) {
+        return locationRepository.findLocationById(id);
     }
 }

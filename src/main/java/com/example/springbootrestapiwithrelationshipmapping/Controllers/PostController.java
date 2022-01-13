@@ -33,7 +33,7 @@ public class PostController {
     }
 
     @PostMapping("addPost")
-    Post addPost(Post post){
+    Post addPost(@RequestBody Post post){
        return postService.addPost(post);
     }
 
