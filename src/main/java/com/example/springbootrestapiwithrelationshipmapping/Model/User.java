@@ -23,7 +23,7 @@ public class User {
     private List<Post> posts;
 
     @ManyToOne
-    @JoinColumn(name = "location_id")
+    @JoinColumn(name = "location_id", referencedColumnName = "id")
     private Location location;
     private String email;
 }

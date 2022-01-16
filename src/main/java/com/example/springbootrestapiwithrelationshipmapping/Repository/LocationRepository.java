@@ -9,6 +9,6 @@ import java.util.Optional;
 
 @Repository
 public interface LocationRepository extends JpaRepository<Location,Integer> {
-List<Location> findAllLocation();
+List<Location> findAll();
 Optional<Location> findLocationById(int id);
 }

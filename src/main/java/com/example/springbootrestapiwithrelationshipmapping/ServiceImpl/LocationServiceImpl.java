@@ -34,7 +34,7 @@ public class LocationServiceImpl implements LocationService {
 
     @Override
     public List<Location> getAllPost() {
-        return locationRepository.findAllLocation();
+        return locationRepository.findAll();
     }
 
     @Override
