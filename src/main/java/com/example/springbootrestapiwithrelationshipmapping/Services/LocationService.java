@@ -11,4 +11,5 @@ public interface LocationService {
     Location addLocation(Location location);
     List<Location> getAllPost();
     Optional<Location> findLocationById(int id);
+    Optional<Location> findById(Integer id);
 }

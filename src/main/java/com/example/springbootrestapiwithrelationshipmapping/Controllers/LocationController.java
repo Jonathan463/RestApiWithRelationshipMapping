@@ -2,11 +2,15 @@ package com.example.springbootrestapiwithrelationshipmapping.Controllers;
 
 import com.example.springbootrestapiwithrelationshipmapping.Model.Location;
 import com.example.springbootrestapiwithrelationshipmapping.Model.Post;
+import com.example.springbootrestapiwithrelationshipmapping.Model.User;
 import com.example.springbootrestapiwithrelationshipmapping.ServiceImpl.LocationServiceImpl;
 import com.example.springbootrestapiwithrelationshipmapping.Services.LocationService;
+import com.example.springbootrestapiwithrelationshipmapping.Services.UserService;
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -15,10 +19,12 @@ public class LocationController {
 
 
     private LocationService locationService;
+    private UserService userService;
 
     @Autowired
-    public LocationController(LocationService locationService) {
+    public LocationController(LocationService locationService, UserService userService) {
         this.locationService = locationService;
+        this.userService = userService;
     }
 
 
@@ -30,5 +36,16 @@ public class LocationController {
     @GetMapping("getLocation/{id}")
     Optional<Location> getLocationById(@PathVariable(value = "id") int id){
         return locationService.findLocationById(id);
+    }
+
+    @GetMapping("/location/{id}/users")
+    public List<User> getUsersByLocation(@PathVariable Integer id){
+        Optional<User> location = userService.findUserByLocationId(id);
+
+        if(location.isPresent()){
+            User newLocation = location.get();
+            return newLocation.getLocation().getUsers();
+        }
+        return null;
     }
 }

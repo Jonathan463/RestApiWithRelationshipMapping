@@ -41,4 +41,9 @@ public class LocationServiceImpl implements LocationService {
     public Optional<Location> findLocationById(int id) {
         return locationRepository.findLocationById(id);
     }
+
+    @Override
+    public Optional<Location> findById(Integer id) {
+        return locationRepository.findById(id);
+    }
 }
