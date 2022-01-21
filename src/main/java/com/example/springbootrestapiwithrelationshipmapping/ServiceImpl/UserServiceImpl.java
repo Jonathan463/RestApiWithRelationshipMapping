@@ -1,5 +1,6 @@
 package com.example.springbootrestapiwithrelationshipmapping.ServiceImpl;
 
+import com.example.springbootrestapiwithrelationshipmapping.Model.Location;
 import com.example.springbootrestapiwithrelationshipmapping.Model.User;
 import com.example.springbootrestapiwithrelationshipmapping.Repository.UserRepository;
 import com.example.springbootrestapiwithrelationshipmapping.Services.UserService;
@@ -21,7 +22,7 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public Optional<User> findUserByLocationId(int id) {
+    public List<User> findUserByLocationId(int id) {
         return userRepository.findUserByLocationId(id);
     }
 
@@ -31,10 +32,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User registerUser(User user) {
-
+    public User registerUser(User user, int id) {
+        Location location = new Location(10);
+        user.setLocation(location);
         return userRepository.save(user);
     }
+
 
     @Override
     public List<User> findAllUsers() {

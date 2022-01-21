@@ -14,6 +14,10 @@ import java.util.List;
 @NoArgsConstructor
 public class Location {
 
+    public Location(Integer id) {
+        this.id = id;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 
@@ -31,6 +35,8 @@ public class Location {
         this.users = users;
     }
 
+
     @OneToMany(mappedBy = "location")
     private List<User> users;
+
 }

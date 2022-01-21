@@ -8,9 +8,9 @@ import java.util.Optional;
 
 @Service
 public interface UserService {
-    Optional<User>  findUserByLocationId(int id);
+    List<User> findUserByLocationId(int id);
     Optional<User> findUserById(int id);
-    User registerUser(User user);
+    User registerUser(User user, int id);
     List<User> findAllUsers();
 
 }

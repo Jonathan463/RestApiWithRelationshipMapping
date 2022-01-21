@@ -20,6 +20,7 @@ public class User {
     private Integer id;
     private String firstname;
     private String lastname;
+    private String email;
 
     @JsonManagedReference
     public List<Post> getPosts() {
@@ -33,7 +34,7 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Post> posts;
 
-    @JsonBackReference
+    //@JsonBackReference
     public Location getLocation() {
         return location;
     }
@@ -45,5 +46,5 @@ public class User {
     @ManyToOne
     @JoinColumn(name = "location_id", referencedColumnName = "id")
     private Location location;
-    private String email;
+
 }

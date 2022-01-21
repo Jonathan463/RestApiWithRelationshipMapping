@@ -8,6 +8,7 @@ import com.example.springbootrestapiwithrelationshipmapping.Services.LocationSer
 import com.example.springbootrestapiwithrelationshipmapping.Services.UserService;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,7 +29,7 @@ public class LocationController {
     }
 
 
-    @PostMapping("addLocation")
+    @PostMapping(path="addLocation", produces = MediaType.APPLICATION_JSON_VALUE,consumes =  MediaType.APPLICATION_JSON_VALUE)
     Location addLocations(@RequestBody Location location){
         return locationService.addLocation(location);
     }
@@ -38,14 +39,5 @@ public class LocationController {
         return locationService.findLocationById(id);
     }
 
-    @GetMapping("/location/{id}/users")
-    public List<User> getUsersByLocation(@PathVariable Integer id){
-        Optional<User> location = userService.findUserByLocationId(id);
 
-        if(location.isPresent()){
-            User newLocation = location.get();
-            return newLocation.getLocation().getUsers();
-        }
-        return null;
-    }
 }
