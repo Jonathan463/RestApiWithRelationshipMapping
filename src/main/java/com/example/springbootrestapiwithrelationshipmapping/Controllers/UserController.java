@@ -2,6 +2,7 @@ package com.example.springbootrestapiwithrelationshipmapping.Controllers;
 
 import com.example.springbootrestapiwithrelationshipmapping.Model.User;
 import com.example.springbootrestapiwithrelationshipmapping.Services.UserService;
+import com.example.springbootrestapiwithrelationshipmapping.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,9 +22,9 @@ public class UserController {
 
 
 
-    @PostMapping("addUser/{id}")
-    User addUsers(@RequestBody User user,@PathVariable(value = "id") int id){
-        return userService.registerUser(user,id);
+    @PostMapping("addUser")
+    User addUsers(@RequestBody UserDTO user){
+        return userService.registerUser(user);
     }
 
     @GetMapping("users")
@@ -37,8 +38,8 @@ public class UserController {
     }
 
     @GetMapping("/location/{id}/users")
-    public List<User> getUsersByLocation(@PathVariable Integer id){
-        List<User> users = userService.findUserByLocationId(id);
+    public Optional<User> getUsersByLocation(@PathVariable("id") Integer id){
+        Optional<User> users = userService.findUserByLocationId(10);
 
         System.out.println(users);
 //        if(location.isPresent()){

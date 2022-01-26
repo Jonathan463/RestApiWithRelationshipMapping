@@ -14,16 +14,14 @@ import java.util.List;
 @NoArgsConstructor
 public class Location {
 
-    public Location(Integer id) {
-        this.id = id;
-    }
+//    public Location(Integer id) {
+//        this.id = id;
+//    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
-
-
     private Integer id;
+
     private String name;
 
     @JsonManagedReference

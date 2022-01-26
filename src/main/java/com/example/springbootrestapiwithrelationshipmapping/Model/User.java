@@ -34,7 +34,7 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Post> posts;
 
-    //@JsonBackReference
+//    @JsonBackReference
     public Location getLocation() {
         return location;
     }
@@ -47,4 +47,15 @@ public class User {
     @JoinColumn(name = "location_id", referencedColumnName = "id")
     private Location location;
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", email='" + email + '\'' +
+                ", posts=" + posts +
+                ", location=" + location.getName()+
+                '}';
+    }
 }

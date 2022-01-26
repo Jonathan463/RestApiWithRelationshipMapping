@@ -11,8 +11,11 @@ import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<User,Integer> {
-    @Query("Select u.firstname, u.lastname, u.email from User u where u.location.id=:id")
-    List<User> findUserByLocationId(@Param("id") int id);
+   //@Query("Select u.firstname, u.lastname, u.email from User u where u.location.id=:id")
+    @Query(value = "SELECT firstname FROM users WHERE location_id=?", nativeQuery = true)
+    Optional<User> findAllUserByLocationId(Integer locationId);
+    //List<User> findAllByLocation_Id(Integer id);
+
 Optional<User> findUserById(int id);
 //Optional<User> findUserByLocation
 }
