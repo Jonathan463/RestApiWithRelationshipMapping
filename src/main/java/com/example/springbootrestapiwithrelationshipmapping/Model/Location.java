@@ -24,17 +24,18 @@ public class Location {
 
     private String name;
 
-    @JsonManagedReference
-    public List<User> getUsers() {
-        return users;
-    }
+////    @JsonManagedReference
+//    public User getUsers() {
+//        return users;
+//    }
+//
+//    public void setUsers(User users) {
+//        this.users = users;
+//    }
 
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
 
-
-    @OneToMany(mappedBy = "location")
-    private List<User> users;
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User users;
 
 }

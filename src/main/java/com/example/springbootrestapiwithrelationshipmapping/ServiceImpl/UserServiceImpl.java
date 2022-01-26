@@ -5,7 +5,6 @@ import com.example.springbootrestapiwithrelationshipmapping.Model.User;
 import com.example.springbootrestapiwithrelationshipmapping.Repository.LocationRepository;
 import com.example.springbootrestapiwithrelationshipmapping.Repository.UserRepository;
 import com.example.springbootrestapiwithrelationshipmapping.Services.UserService;
-import com.example.springbootrestapiwithrelationshipmapping.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,19 +36,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User registerUser(UserDTO userDTO) {
-        Location location = new Location();
-        User user = new User();
-        location.setName(userDTO.getLocation());
-        locationRepository.save(location);
-
-        Location loc = locationRepository.findLocationByName(location.getName());
-        System.out.println(loc);
+    public User registerUser(User user) {
+//        Location location = new Location(10);
+//        locationRepository.save(user.getLocation());
+//        Location loc = locationRepository.findLocationByName(user.getLocation());
 //        user.setLocation(location);
-        user.setFirstname(userDTO.getFirstname());
-        user.setLastname(userDTO.getLastname());
-        user.setEmail(userDTO.getEmail());
-        user.setLocation(loc);
+//        user.setLocation(loc);
         return userRepository.save(user);
     }
 

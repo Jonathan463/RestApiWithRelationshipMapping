@@ -34,18 +34,18 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Post> posts;
 
-//    @JsonBackReference
-    public Location getLocation() {
-        return location;
-    }
-
-    public void setLocation(Location location) {
-        this.location = location;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "location_id", referencedColumnName = "id")
-    private Location location;
+////    @JsonBackReference
+//    public Location getLocation() {
+//        return location;
+//    }
+//
+//    public void setLocation(Location location) {
+//        this.location = location;
+//    }
+//
+//    @ManyToOne
+//    @JoinColumn(name = "location_id", referencedColumnName = "id")
+//    private Location location;
 
     @Override
     public String toString() {
@@ -55,7 +55,7 @@ public class User {
                 ", lastname='" + lastname + '\'' +
                 ", email='" + email + '\'' +
                 ", posts=" + posts +
-                ", location=" + location.getName()+
+//                ", location=" + location.getName()+
                 '}';
     }
 }

@@ -1,8 +1,8 @@
 package com.example.springbootrestapiwithrelationshipmapping.Controllers;
 
+import com.example.springbootrestapiwithrelationshipmapping.Model.Location;
 import com.example.springbootrestapiwithrelationshipmapping.Model.User;
 import com.example.springbootrestapiwithrelationshipmapping.Services.UserService;
-import com.example.springbootrestapiwithrelationshipmapping.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,9 +23,10 @@ public class UserController {
 
 
     @PostMapping("addUser")
-    User addUsers(@RequestBody UserDTO user){
+    User addUsers(@RequestBody User user){
         return userService.registerUser(user);
     }
+
 
     @GetMapping("users")
     List<User> findAllUsers(){

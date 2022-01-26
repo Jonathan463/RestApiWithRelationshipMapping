@@ -1,9 +1,10 @@
 package com.example.springbootrestapiwithrelationshipmapping.ServiceImpl;
 
 import com.example.springbootrestapiwithrelationshipmapping.Model.Location;
+import com.example.springbootrestapiwithrelationshipmapping.Model.User;
 import com.example.springbootrestapiwithrelationshipmapping.Repository.LocationRepository;
+import com.example.springbootrestapiwithrelationshipmapping.Repository.UserRepository;
 import com.example.springbootrestapiwithrelationshipmapping.Services.LocationService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,10 +15,11 @@ import java.util.Optional;
 public class LocationServiceImpl implements LocationService {
 
 //    private LocationService locationService;
-
+    private final UserRepository userRepository;
     private final LocationRepository locationRepository;
 
-    public LocationServiceImpl(LocationRepository locationRepository) {
+    public LocationServiceImpl(UserRepository userRepository, LocationRepository locationRepository) {
+        this.userRepository = userRepository;
         this.locationRepository = locationRepository;
     }
 //    @Autowired
@@ -28,7 +30,9 @@ public class LocationServiceImpl implements LocationService {
 
 
     @Override
-    public Location addLocation(Location location) {
+    public Location addLocation(Location location, Integer id) {
+        User user = userRepository.findUserById(id).get();
+        location.setUsers(user);
         return locationRepository.save(location);
     }
 

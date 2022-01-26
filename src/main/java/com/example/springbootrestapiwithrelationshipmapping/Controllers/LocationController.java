@@ -29,9 +29,13 @@ public class LocationController {
     }
 
 
-    @PostMapping(path="addLocation", produces = MediaType.APPLICATION_JSON_VALUE,consumes =  MediaType.APPLICATION_JSON_VALUE)
-    Location addLocations(@RequestBody Location location){
-        return locationService.addLocation(location);
+//    @PostMapping(path="addLocation", produces = MediaType.APPLICATION_JSON_VALUE,consumes =  MediaType.APPLICATION_JSON_VALUE)
+//    Location addLocations(@RequestBody Location location){
+//        return locationService.addLocation(location);
+//    }
+    @PostMapping("addLocation/{id}")
+    Location addLocation(@PathVariable("id") Integer id, @RequestBody Location location){
+        return locationService.addLocation(location,id);
     }
 
     @GetMapping("getLocation/{id}")
